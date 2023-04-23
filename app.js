@@ -1,3 +1,7 @@
+// New book window
+const newBookWinBtn = document.getElementById('');
+
+// New book
 const bookName = document.getElementById('name');
 const bookAuthor = document.getElementById('author');
 const bookPages = document.getElementById('pages');
