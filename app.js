@@ -24,17 +24,40 @@ function Book(name, author, pages, read) {
   this.pages = pages;
   this.read = read;
 
+  this.createElement = function (text, className) {
+    const para = document.createElement("p");
+    para.classList.add(className);
+    const textNode = document.createTextNode(text);
+    para.appendChild(textNode);
+    return para;
+  };
+
   this.createBook = function () {
     const container = document.createElement("div");
-    const para = document.createElement("p");
-    const bookTitle = document.createTextNode(this.name);
-    const bookAuthor = document.createTextNode(this.author);
-    const bookPages = document.createTextNode(this.pages);
-    const bookRead = document.createTextNode(this.read);
+    container.classList.add("book-container");
+    const bookTitle = this.createElement(`${this.name}`, "book-name");
+    const bookAuthor = this.createElement(`By: ${this.author}`, "book-author");
+    const bookPages = this.createElement(
+      `# of pages: ${this.pages}`,
+      "book-pages"
+    );
+    const bookRead = this.createElement(
+      `Read: ${this.read === "on" ? "Yes" : "No"}`,
+      "book-read"
+    );
+    const bookReadBtn = document.createElement("button");
+    const btnTextNode = document.createTextNode("Read");
+
+    bookReadBtn.addEventListener("click", () => {
+      container.classList.toggle("read");
+    });
+
+    bookReadBtn.appendChild(btnTextNode);
     container.appendChild(bookTitle);
     container.appendChild(bookAuthor);
     container.appendChild(bookPages);
     container.appendChild(bookRead);
+    container.appendChild(bookReadBtn);
 
     bookList.appendChild(container);
   };
