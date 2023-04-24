@@ -1,12 +1,19 @@
-// New book window
-const newBookWinBtn = document.getElementById('');
-
-// New book
+const bookWindow = document.getElementById('book-window');
 const bookName = document.getElementById('name');
 const bookAuthor = document.getElementById('author');
 const bookPages = document.getElementById('pages');
 const bookRead = document.getElementById('read');
 const submit = document.getElementById('submit');
+
+const newBookWinBtn = document.getElementById('new-book-btn');
+
+// New book window
+
+newBookWinBtn.addEventListener('click', () => {
+	bookWindow.classList.toggle('hidden');
+});
+
+// New book
 
 bookList = [];
 
