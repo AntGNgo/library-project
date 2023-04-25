@@ -32,9 +32,18 @@ function Book(name, author, pages, read) {
     return para;
   };
 
+  this.deleteBook = function(index) {
+    const elementToDelete = document.getElementById(index)
+    bookList.remove(elementToDelete)
+    bookArr.splice(index, 1) 
+  }
+
   this.createBook = function (index) {
+    // Random ID
     const container = document.createElement("div");
     container.classList.add("book-container");
+    const deleteBtn = document.createElement("button")
+    deleteBtn.appendChild(document.createTextNode("X"))
     const bookTitle = this.createElement(`${this.name}`, "book-name");
     const bookAuthor = this.createElement(`By: ${this.author}`, "book-author");
     const bookPages = this.createElement(
@@ -52,7 +61,12 @@ function Book(name, author, pages, read) {
       container.classList.toggle("read");
     });
 
+    deleteBtn.addEventListener("click", () => {
+      this.deleteBook(container.getAttribute("bookId"))
+    })
+
     bookReadBtn.appendChild(btnTextNode);
+    container.appendChild(deleteBtn)
     container.appendChild(bookTitle);
     container.appendChild(bookAuthor);
     container.appendChild(bookPages);
@@ -60,7 +74,7 @@ function Book(name, author, pages, read) {
     container.appendChild(bookReadBtn);
 
     bookList.appendChild(container);
-    container.setAttribute("bookId", index);
+    container.setAttribute("id", index);
   };
 }
 
