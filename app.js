@@ -32,7 +32,7 @@ function Book(name, author, pages, read) {
     return para;
   };
 
-  this.createBook = function () {
+  this.createBook = function (index) {
     const container = document.createElement("div");
     container.classList.add("book-container");
     const bookTitle = this.createElement(`${this.name}`, "book-name");
@@ -60,6 +60,7 @@ function Book(name, author, pages, read) {
     container.appendChild(bookReadBtn);
 
     bookList.appendChild(container);
+    container.setAttribute("bookId", index);
   };
 }
 
@@ -72,5 +73,5 @@ submit.addEventListener("click", (e) => {
     bookRead.value
   );
   bookArr.push(book);
-  book.createBook();
+  bookArr[bookArr.length - 1].createBook(bookArr.length - 1);
 });
