@@ -27,7 +27,9 @@ function Book(name, author, pages, read) {
 // Helper function for creating new text elements
   this.createElement = function (text, className) {
     const para = document.createElement("p");
+    if (className) {
     para.classList.add(className);
+    }
     const textNode = document.createTextNode(text);
     para.appendChild(textNode);
     return para;
@@ -57,9 +59,10 @@ function Book(name, author, pages, read) {
       "book-pages"
     );
     const bookRead = this.createElement(
-      `Read: ${this.read === "on" ? "Yes" : "No"}`,
-      "book-read"
+      `Read: ${this.read.checked ? "Yes" : "No"}`, "book-read"
     );
+
+
     const bookReadBtn = document.createElement("button");
     const btnTextNode = document.createTextNode("Read");
 
@@ -67,6 +70,11 @@ function Book(name, author, pages, read) {
 
     bookReadBtn.addEventListener("click", () => {
       container.classList.toggle("read");
+      if (container.classList.contains('read')) {
+        bookRead.textContent = `Read: Yes`
+      } else {
+        bookRead.textContent = `Read: No`
+      }
     });
 
     deleteBtn.addEventListener("click", () => {
@@ -86,17 +94,24 @@ function Book(name, author, pages, read) {
 
     // Set html IDs for containers
     container.setAttribute("id", index);
+
+    // Set read style onto container
+    if(this.read.checked) {
+      container.classList.add('read')
+    }
   };
 }
 
 submit.addEventListener("click", (e) => {
   e.preventDefault();
+  if (bookName.value !== "" && bookAuthor.value !== "" && parseInt(bookPages.value) > 0) {
   book = new Book(
     bookName.value,
     bookAuthor.value,
     bookPages.value,
-    bookRead.value
+    bookRead
   );
   bookArr.push(book);
   bookArr[bookArr.length - 1].createBook(bookArr.length - 1);
+  }
 });
