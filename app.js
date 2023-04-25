@@ -24,6 +24,7 @@ function Book(name, author, pages, read) {
   this.pages = pages;
   this.read = read;
 
+// Helper function for creating new text elements
   this.createElement = function (text, className) {
     const para = document.createElement("p");
     para.classList.add(className);
@@ -32,18 +33,23 @@ function Book(name, author, pages, read) {
     return para;
   };
 
+// Function for deleting book
   this.deleteBook = function(index) {
     const elementToDelete = document.getElementById(index)
-    bookList.remove(elementToDelete)
+    elementToDelete.remove()
     bookArr.splice(index, 1) 
   }
 
   this.createBook = function (index) {
-    // Random ID
+    // Container for book
     const container = document.createElement("div");
     container.classList.add("book-container");
+
+    // Delete button
     const deleteBtn = document.createElement("button")
     deleteBtn.appendChild(document.createTextNode("X"))
+
+    // Create elements for book info
     const bookTitle = this.createElement(`${this.name}`, "book-name");
     const bookAuthor = this.createElement(`By: ${this.author}`, "book-author");
     const bookPages = this.createElement(
@@ -57,14 +63,17 @@ function Book(name, author, pages, read) {
     const bookReadBtn = document.createElement("button");
     const btnTextNode = document.createTextNode("Read");
 
+    // Event listeners for btns
+
     bookReadBtn.addEventListener("click", () => {
       container.classList.toggle("read");
     });
 
     deleteBtn.addEventListener("click", () => {
-      this.deleteBook(container.getAttribute("bookId"))
+      this.deleteBook(container.getAttribute("id"))
     })
 
+    // Appending to container
     bookReadBtn.appendChild(btnTextNode);
     container.appendChild(deleteBtn)
     container.appendChild(bookTitle);
@@ -74,6 +83,8 @@ function Book(name, author, pages, read) {
     container.appendChild(bookReadBtn);
 
     bookList.appendChild(container);
+
+    // Set html IDs for containers
     container.setAttribute("id", index);
   };
 }
