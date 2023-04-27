@@ -24,23 +24,23 @@ function Book(name, author, pages, read) {
   this.pages = pages;
   this.read = read;
 
-// Helper function for creating new text elements
+  // Helper function for creating new text elements
   this.createElement = function (text, className) {
     const para = document.createElement("p");
     if (className) {
-    para.classList.add(className);
+      para.classList.add(className);
     }
     const textNode = document.createTextNode(text);
     para.appendChild(textNode);
     return para;
   };
 
-// Function for deleting book
-  this.deleteBook = function(index) {
-    const elementToDelete = document.getElementById(index)
-    elementToDelete.remove()
-    bookArr.splice(index, 1) 
-  }
+  // Function for deleting book
+  this.deleteBook = function (index) {
+    const elementToDelete = document.getElementById(index);
+    elementToDelete.remove();
+    bookArr.splice(index, 1);
+  };
 
   this.createBook = function (index) {
     // Container for book
@@ -48,8 +48,8 @@ function Book(name, author, pages, read) {
     container.classList.add("book-container");
 
     // Delete button
-    const deleteBtn = document.createElement("button")
-    deleteBtn.appendChild(document.createTextNode("X"))
+    const deleteBtn = document.createElement("button");
+    deleteBtn.appendChild(document.createTextNode("X"));
 
     // Create elements for book info
     const bookTitle = this.createElement(`${this.name}`, "book-name");
@@ -59,9 +59,9 @@ function Book(name, author, pages, read) {
       "book-pages"
     );
     const bookRead = this.createElement(
-      `Read: ${this.read.checked ? "Yes" : "No"}`, "book-read"
+      `Read: ${this.read.checked ? "Yes" : "No"}`,
+      "book-read"
     );
-
 
     const bookReadBtn = document.createElement("button");
     const btnTextNode = document.createTextNode("Read");
@@ -70,20 +70,20 @@ function Book(name, author, pages, read) {
 
     bookReadBtn.addEventListener("click", () => {
       container.classList.toggle("read");
-      if (container.classList.contains('read')) {
-        bookRead.textContent = `Read: Yes`
+      if (container.classList.contains("read")) {
+        bookRead.textContent = `Read: Yes`;
       } else {
-        bookRead.textContent = `Read: No`
+        bookRead.textContent = `Read: No`;
       }
     });
 
     deleteBtn.addEventListener("click", () => {
-      this.deleteBook(container.getAttribute("id"))
-    })
+      this.deleteBook(container.getAttribute("id"));
+    });
 
     // Appending to container
     bookReadBtn.appendChild(btnTextNode);
-    container.appendChild(deleteBtn)
+    container.appendChild(deleteBtn);
     container.appendChild(bookTitle);
     container.appendChild(bookAuthor);
     container.appendChild(bookPages);
@@ -96,22 +96,26 @@ function Book(name, author, pages, read) {
     container.setAttribute("id", index);
 
     // Set read style onto container
-    if(this.read.checked) {
-      container.classList.add('read')
+    if (this.read.checked) {
+      container.classList.add("read");
     }
   };
 }
 
 submit.addEventListener("click", (e) => {
   e.preventDefault();
-  if (bookName.value !== "" && bookAuthor.value !== "" && parseInt(bookPages.value) > 0) {
-  book = new Book(
-    bookName.value,
-    bookAuthor.value,
-    bookPages.value,
-    bookRead
-  );
-  bookArr.push(book);
-  bookArr[bookArr.length - 1].createBook(bookArr.length - 1);
+  if (
+    bookName.value !== "" &&
+    bookAuthor.value !== "" &&
+    parseInt(bookPages.value) > 0
+  ) {
+    book = new Book(
+      bookName.value,
+      bookAuthor.value,
+      bookPages.value,
+      bookRead
+    );
+    bookArr.push(book);
+    bookArr[bookArr.length - 1].createBook(bookArr.length - 1);
   }
 });
