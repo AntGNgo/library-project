@@ -18,14 +18,16 @@ newBookWinBtn.addEventListener("click", () => {
 
 let bookArr = [];
 
-function Book(name, author, pages, read) {
-  this.name = name;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(name, author, pages, read) {
+    this.name = name;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
   // Helper function for creating new text elements
-  this.createElement = function (text, className) {
+  createElement = function (text, className) {
     const para = document.createElement("p");
     if (className) {
       para.classList.add(className);
@@ -36,13 +38,13 @@ function Book(name, author, pages, read) {
   };
 
   // Function for deleting book
-  this.deleteBook = function (index) {
+  deleteBook = function (index) {
     const elementToDelete = document.getElementById(index);
     elementToDelete.remove();
     bookArr.splice(index, 1);
   };
 
-  this.createBook = function (index) {
+  createBook = function (index) {
     // Container for book
     const container = document.createElement("div");
     container.classList.add("book-container");
