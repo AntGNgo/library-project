@@ -1,4 +1,5 @@
 const bookWindow = document.getElementById("book-window");
+const closeBookWin = document.getElementById("close-book-window");
 const bookName = document.getElementById("name");
 const bookAuthor = document.getElementById("author");
 const bookPages = document.getElementById("pages");
@@ -106,6 +107,15 @@ class Book {
   };
 }
 
+closeBookWin.addEventListener("click", () => {
+  bookName.value = "";
+  bookAuthor.value = "";
+  bookPages.value = "";
+  bookRead.checked = false;
+  darkOverlay.classList.toggle("darkened");
+  bookWindow.classList.toggle("hidden");
+});
+
 submit.addEventListener("click", (e) => {
   e.preventDefault();
   if (
@@ -121,5 +131,11 @@ submit.addEventListener("click", (e) => {
     );
     bookArr.push(book);
     bookArr[bookArr.length - 1].createBook(bookArr.length - 1);
+    darkOverlay.classList.toggle("darkened");
+    bookWindow.classList.toggle("hidden");
+    bookName.value = "";
+    bookAuthor.value = "";
+    bookPages.value = "";
+    bookRead.checked = false;
   }
 });

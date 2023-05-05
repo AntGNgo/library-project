@@ -26,13 +26,14 @@ h1 {
 }
 
 #new-book-btn,
-input[type="submit"] {
+button[type="submit"] {
   border-radius: 20px;
   border: none;
   background-color: #0096c7;
   color: white;
   padding: 10px 20px;
   font-size: 1.1rem;
+  cursor: pointer;
 }
 
 .book-name {
@@ -80,4 +81,16 @@ form {
 
 form label {
   font-size: 1.2rem;
+}
+
+#close-book-window {
+  align-self: flex-end;
+  margin-right: 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: #0096c7;
+  color: white;
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  cursor: pointer;
 }
