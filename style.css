@@ -2,10 +2,26 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  margin: 50px 50px;
 }
 
 .hidden {
   display: none;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.darkened {
+  z-index: 1;
+  position: absolute;
+  background-color: rgba(83, 83, 83, 0.575);
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
 }
 
 #new-book-btn,
@@ -14,7 +30,8 @@ input[type="submit"] {
   border: none;
   background-color: #0096c7;
   color: white;
-  padding: 5px 10px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
 }
 
 .book-name {
@@ -56,7 +73,4 @@ form {
 
 form label {
   font-size: 1.2rem;
-}
-
-input[type="submit"] {
 }

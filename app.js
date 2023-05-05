@@ -5,12 +5,14 @@ const bookPages = document.getElementById("pages");
 const bookRead = document.getElementById("read");
 const submit = document.getElementById("submit");
 
+const darkOverlay = document.getElementById("dark-overlay");
 const newBookWinBtn = document.getElementById("new-book-btn");
 const bookList = document.getElementById("book-list");
 
 // New book window
 
 newBookWinBtn.addEventListener("click", () => {
+  darkOverlay.classList.toggle("darkened");
   bookWindow.classList.toggle("hidden");
 });
 
