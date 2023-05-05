@@ -8,7 +8,8 @@ body {
   display: none;
 }
 
-#new-book-btn {
+#new-book-btn,
+input[type="submit"] {
   border-radius: 20px;
   border: none;
   background-color: #0096c7;
@@ -38,4 +39,24 @@ body {
 
 .read {
   border: 5px solid green;
+}
+
+form {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+form label {
+  font-size: 1.2rem;
+}
+
+input[type="submit"] {
 }
