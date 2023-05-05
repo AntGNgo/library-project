@@ -1,5 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
 .hidden {
   display: none;
+}
+
+#new-book-btn {
+  border-radius: 20px;
+  border: none;
+  background-color: #0096c7;
+  color: white;
+  padding: 5px 10px;
 }
 
 .book-name {
